@@ -14,7 +14,7 @@ export class Transaction {
         accountExternalIdCredit: string,
         transferType: TransferType,
         value: number,
-        status: 'Pending' | 'Approved' | 'Rejected',
+        status: TransactionStatus,
         createdDate: Date
     ) {
         this.guid = guid
@@ -25,4 +25,10 @@ export class Transaction {
         this.status = status
         this.createdDate = createdDate
     }
+}
+
+export enum TransactionStatus {
+    PENDING = 'Pending',
+    APPROVED = 'Approved',
+    REJECTED = 'Rejected'
 }

@@ -1,8 +1,7 @@
 import { Module } from '@nestjs/common';
 import { CqrsModule } from '@nestjs/cqrs';
-import { QueriesHandlers } from './config/queries';
+import { CommandsHandlers } from './config/commands';
 import { ClientsModule, Transport } from '@nestjs/microservices';
-import { EventsHandlers } from './config/events';
 import { Providers } from './config/providers';
 
 @Module({
@@ -24,8 +23,7 @@ import { Providers } from './config/providers';
         ]),
     ],
     providers: [
-        ...QueriesHandlers,
-        ...EventsHandlers,
+        ...CommandsHandlers,
         ...Providers
     ]
 })

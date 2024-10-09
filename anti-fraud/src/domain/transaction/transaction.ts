@@ -1,14 +1,13 @@
 export class Transaction {
-    guid: string
-    value: number
-    status: string
-    constructor(guid: string, value: number, status: string) {
+    readonly guid: string
+    readonly value: number
+    readonly status: TransactionStatus
+    constructor(guid: string, value: number) {
         this.guid = guid
         this.value = value
-        this.status = status
+        this.status = value > 1000 ? TransactionStatus.REJECTED : TransactionStatus.APPROVED;
     }
 }
-
 
 export enum TransactionStatus {
     APPROVED = 'Approved',

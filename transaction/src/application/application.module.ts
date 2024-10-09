@@ -3,7 +3,6 @@ import { CqrsModule } from '@nestjs/cqrs';
 import { CommandHandlers } from './config/commands';
 import { Providers } from './config/providers';
 import { ClientsModule, Transport } from '@nestjs/microservices';
-import { EventsHandlers } from './config/events';
 import { QueryHandlers } from './config/queries';
 import { KAFKA_BROKER } from 'src/config';
 
@@ -28,7 +27,6 @@ import { KAFKA_BROKER } from 'src/config';
     providers: [
         ...CommandHandlers,
         ...Providers,
-        ...EventsHandlers,
         ...QueryHandlers
     ]
 })

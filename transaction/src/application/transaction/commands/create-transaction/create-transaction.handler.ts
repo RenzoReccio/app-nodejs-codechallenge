@@ -1,7 +1,7 @@
 import { CommandHandler, ICommandHandler } from "@nestjs/cqrs";
 import { CreateTransactionCommand } from "./create-transaction.command";
 import { ITransactionRepository } from "src/domain/transaction/transaction.repository";
-import { Transaction } from "src/domain/transaction/transaction";
+import { Transaction, TransactionStatus } from "src/domain/transaction/transaction";
 import { TransferType } from "src/domain/transfer-type/transfer-type";
 
 @CommandHandler(CreateTransactionCommand)
@@ -22,7 +22,7 @@ export class CreateTransactionHandler implements ICommandHandler<CreateTransacti
             command.accountExternalIdCredit,
             new TransferType(command.transferTypeId, null),
             command.value,
-            'Pending',
+            TransactionStatus.PENDING,
             null
         )
     }
