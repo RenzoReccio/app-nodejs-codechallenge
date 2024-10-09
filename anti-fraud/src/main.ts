@@ -1,8 +1,24 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
+import { PresentationModule } from './presentation/presentation.module';
+import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  await app.listen(3000);
+
+  const app = await NestFactory.createMicroservice<MicroserviceOptions>(
+    PresentationModule,
+    {
+      transport: Transport.KAFKA,
+      options: {
+        client: {
+          clientId: `fraud-sv`,
+          brokers: [process.env.KAFKA_BROKER],
+        },
+        consumer: {
+          groupId: 'consumer-fraud',
+        },
+      },
+    },
+  );
+  app.listen();
 }
 bootstrap();

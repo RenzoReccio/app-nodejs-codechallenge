@@ -32,6 +32,15 @@
 $ npm install
 ```
 
+## .env setup
+```sh
+DB_HOST=localhost
+DB_PORT=5438
+DB_USER=postgres
+DB_PASSWORD=postgres
+DB_DATABASE=dev-yape
+KAFKA_BROKER=localhost:9092
+```
 ## Compile and run the project
 
 ```bash

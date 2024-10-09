@@ -2,7 +2,7 @@ import { CommandHandler, ICommandHandler } from "@nestjs/cqrs";
 import { CreateTransactionCommand } from "./create-transaction.command";
 import { ITransactionRepository } from "src/domain/transaction/transaction.repository";
 import { Transaction } from "src/domain/transaction/transaction";
-import { TransferType } from "src/domain/transfer-type/tranfer-type";
+import { TransferType } from "src/domain/transfer-type/transfer-type";
 
 @CommandHandler(CreateTransactionCommand)
 export class CreateTransactionHandler implements ICommandHandler<CreateTransactionCommand, string> {

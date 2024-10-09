@@ -1,0 +1,1 @@
+export const KAFKA_BROKER = () => process.env.KAFKA_BROKER;

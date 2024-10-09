@@ -31,7 +31,10 @@
 ```bash
 $ npm install
 ```
-
+## .env setup
+```sh
+KAFKA_BROKER=localhost:9092
+```
 ## Compile and run the project
 
 ```bash

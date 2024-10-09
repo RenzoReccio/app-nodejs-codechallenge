@@ -1,18 +1,18 @@
-import { TransferType } from "../transfer-type/tranfer-type"
+import { TransferType } from "../transfer-type/transfer-type"
 
 export class Transaction {
     guid: string;
     accountExternalIdDebit: string
     accountExternalIdCredit: string
-    transferTypeId: TransferType
+    transferType: TransferType
     value: number
-    status: 'Pending' | 'Approved' | 'Rejected'
+    status: string
     createdDate: Date
     constructor(
         guid: string,
         accountExternalIdDebit: string,
         accountExternalIdCredit: string,
-        transferTypeId: TransferType,
+        transferType: TransferType,
         value: number,
         status: 'Pending' | 'Approved' | 'Rejected',
         createdDate: Date
@@ -20,7 +20,7 @@ export class Transaction {
         this.guid = guid
         this.accountExternalIdDebit = accountExternalIdDebit
         this.accountExternalIdCredit = accountExternalIdCredit
-        this.transferTypeId = transferTypeId
+        this.transferType = transferType
         this.value = value
         this.status = status
         this.createdDate = createdDate

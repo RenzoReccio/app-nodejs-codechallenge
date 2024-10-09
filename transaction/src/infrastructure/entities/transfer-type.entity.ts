@@ -5,6 +5,6 @@ export class TransferTypeEntity extends BaseEntity {
     @PrimaryColumn()
     id: number;
 
-    @Column({ nullable: true })
+    @Column({ nullable: false })
     name: string;
 }
