@@ -1,11 +1,11 @@
 import { Transaction } from "src/domain/transaction/transaction";
 import { ITransactionRepository } from "src/domain/transaction/transaction.repository";
 import { TransactionEntity } from "../entities/transaction.entity";
-import { Inject } from "@nestjs/common";
+import { Inject, OnModuleDestroy, OnModuleInit } from "@nestjs/common";
 import { ClientKafka } from "@nestjs/microservices";
 import { lastValueFrom } from "rxjs";
 
-export class TransactionRepository implements ITransactionRepository {
+export class TransactionRepository implements ITransactionRepository, OnModuleInit, OnModuleDestroy {
     constructor(
         @Inject('TRANSACTION-SEND') private client: ClientKafka
     ) {
@@ -14,6 +14,14 @@ export class TransactionRepository implements ITransactionRepository {
 
     async Send(guid: string, value: number): Promise<void> {
         await lastValueFrom(this.client.emit('fraud.valid', { transactionGuid: guid, valueToValidate: value }))
+    }
+
+    async onModuleInit() {
+        await this.client.connect();
+    }
+
+    async onModuleDestroy() {
+        await this.client.close();
     }
 
     async Insert(transaction: Transaction): Promise<string> {
