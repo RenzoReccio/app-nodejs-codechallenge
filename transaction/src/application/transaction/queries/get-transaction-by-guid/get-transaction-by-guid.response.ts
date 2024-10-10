@@ -1,9 +1,39 @@
+import { ApiProperty } from "@nestjs/swagger";
+
+export class TransactionType {
+    @ApiProperty()
+    name: string;
+
+    constructor(name: string) {
+        this.name = name;
+    }
+}
+
+export class TransactionStatus {
+    @ApiProperty()
+    name: string;
+
+    constructor(name: string) {
+        this.name = name;
+    }
+}
+
 export class GetTransactionByGuidResponse {
-    transactionExternalId: string
-    transactionType: TransactionType
-    transactionStatus: TransactionStatus
-    value: number
-    createdAt: string
+    @ApiProperty()
+    transactionExternalId: string;
+
+    @ApiProperty()
+    transactionType: TransactionType;
+
+    @ApiProperty()
+    transactionStatus: TransactionStatus;
+
+    @ApiProperty()
+    value: number;
+
+    @ApiProperty()
+    createdAt: string;
+
     constructor(
         transactionExternalId: string,
         transactionType: string,
@@ -11,24 +41,10 @@ export class GetTransactionByGuidResponse {
         value: number,
         createdAt: string
     ) {
-        this.transactionExternalId = transactionExternalId
-        this.transactionType = new TransactionType(transactionType)
-        this.transactionStatus = new TransactionStatus(transactionStatus)
-        this.value = value
-        this.createdAt = createdAt
-    }
-}
-
-export class TransactionType {
-    name: string
-    constructor(name: string) {
-        this.name = name
-    }
-}
-
-export class TransactionStatus {
-    name: string
-    constructor(name: string) {
-        this.name = name
+        this.transactionExternalId = transactionExternalId;
+        this.transactionType = new TransactionType(transactionType);
+        this.transactionStatus = new TransactionStatus(transactionStatus);
+        this.value = value;
+        this.createdAt = createdAt;
     }
 }

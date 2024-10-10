@@ -1,16 +1,21 @@
+import { ApiProperty } from "@nestjs/swagger"
 import { IsUUID, IsNumber } from "class-validator"
 
 export class CreateTransactionCommand {
     @IsUUID()
+    @ApiProperty()
     accountExternalIdDebit: string
 
     @IsUUID()
+    @ApiProperty()
     accountExternalIdCredit: string
     
     @IsNumber()
+    @ApiProperty()
     transferTypeId: number
     
     @IsNumber()
+    @ApiProperty()
     value: number
     constructor(
         accountExternalIdDebit: string,
