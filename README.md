@@ -85,10 +85,9 @@ If you have any questions, please let us know.
 # API Documentation
 
 ## Technologies Used
-- Node.js / Express 
+- Node.js / NestJS 
 - Docker
 - Clean Architecture
-- Google Cloud Platform
 
 ## Installation and Configuration
 ### Prerequisites
