@@ -80,3 +80,56 @@ You can use Graphql;
 When you finish your challenge, after forking a repository, you **must** open a pull request to our repository. There are no limitations to the implementation, you can follow the programming paradigm, modularization, and style that you feel is the most appropriate solution.
 
 If you have any questions, please let us know.
+
+
+# API Documentation
+
+## Technologies Used
+- Node.js / Express 
+- Docker
+- Clean Architecture
+- Google Cloud Platform
+
+## Installation and Configuration
+### Prerequisites
+
+Make sure you have the following installed:
+
+- [Node.js](https://nodejs.org/)
+- [Docker](https://www.docker.com/)
+
+### Clone the Repository
+```sh
+ git clone https://github.com/RenzoReccio/app-nodejs-codechallenge
+```
+### Build and Run
+#### Run with Docker
+```sh
+docker-compose up --build
+```
+#### Access Endpoints Locally
+```sh
+curl -X GET http://localhost:3002/transaction/975a7c55-7429-44a4-aa52-ae6f973c7739 
+```
+
+```sh
+curl -X POST http://localhost:3002/transaction \
+     -H "Content-Type: application/json" \
+     -d '{
+  "accountExternalIdDebit": "d53ecf11-5171-495c-afd5-423d0d71cebd",
+  "accountExternalIdCredit": "d53ecf11-5171-495c-afd5-423d0d91cebd",
+  "transferTypeId": 1,
+  "value": 345
+    }'
+```
+#### Access tracing
+- http://localhost:16686/
+
+## Ejecutar Test
+```sh
+cd anti-fraud
+npm run test
+
+cd transaction
+npm run test
+```
